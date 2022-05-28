@@ -31,7 +31,7 @@ function App() {
   }
 
   return (
-    <div className="app">
+    <div className={(typeof data.main != "undefined") ? ((data.main.temp < 90) ? 'app cold' : 'app') : 'app'}>
       <main>
         <div className="search-box">
           <input type="text" className="search-bar" placeholder="City name..." onChange={event => setLocation(event.target.value)} onKeyPress={searchLocation} value={location} />
