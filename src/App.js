@@ -31,7 +31,7 @@ function App() {
   }
 
   return (
-    <div className={(typeof data.main != "undefined") ? ((data.main.temp < 90) ? 'app cold' : 'app') : 'app'}>
+    <div className={(typeof data.main != "undefined") ? ((data.main.temp < 70) ? 'app cold' : 'app') : 'app'}>
       <main>
         <div className="search-box">
           <input type="text" className="search-bar" placeholder="City name..." onChange={event => setLocation(event.target.value)} onKeyPress={searchLocation} value={location} />
@@ -53,14 +53,15 @@ function App() {
             </div>
           </div>
 
-          <div className="bottom">
+          {data.name !== undefined &&
+            <div className="bottom">
             <div className="feels">
             {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°F</p> : null}
               <p>Feels Like</p>
             </div>
 
             <div className="humidity">
-            {data.main ? <p className='bold'>{data.main.humidity}</p> : null}
+            {data.main ? <p className='bold'>{data.main.humidity}%</p> : null}
               <p>Humidity</p>
             </div>
 
@@ -69,6 +70,7 @@ function App() {
               <p>Wind Speed</p>
             </div>
           </div>
+          }
       
       </main>
     </div>
